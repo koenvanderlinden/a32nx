@@ -21,9 +21,10 @@ import { useState, useEffect } from 'react';
 import Efb from './Efb.tsx';
 import {
     renderTarget, getSimVar, setSimVar,
-} from '../util.mjs';
+} from '../util.js';
 import logo from './Assets/fbw-logo.svg';
 
+import './Assets/Reset.scss';
 import './Assets/Boot.scss';
 
 function ScreenLoading() {

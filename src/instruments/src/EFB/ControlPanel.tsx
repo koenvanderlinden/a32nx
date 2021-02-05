@@ -16,26 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import ReactDOM from 'react-dom';
-import { renderTarget } from '../util.js';
-import './style.scss';
+import React from "react";
 
-import { StatefulSimVar } from './Framework/StatefulSimVar.mjs';
-import { RadioManagementPanel } from './Components/RadioManagementPanel.jsx';
+import Modal from 'react-modal';
 
-function RootInstrumentDisplay() {
-    const lightsTestStatefulSimVar = new StatefulSimVar({
-        simVarGetter: 'L:XMLVAR_LTS_Test',
-        simVarUnit: 'Bool',
-        refreshRate: 250,
-    });
+export const ControlPanel = () => {
 
     return (
-        <div className="rmp-wrapper">
-            <RadioManagementPanel side="L" lightsTest={lightsTestStatefulSimVar.value} />
-            <RadioManagementPanel side="R" lightsTest={lightsTestStatefulSimVar.value} />
-        </div>
-    );
-}
-
-ReactDOM.render(<RootInstrumentDisplay />, renderTarget);
+        <Modal overlayClassName="bg-blue-darkest bg-opacity-90 fixed top-0 w-screen h-screen z-500" className="w-1/3 z-40 bg-blue-dark px-6 py-4 mx-auto mt-3 rounded-lg" isOpen={true}>
+            <div className="flex flex-col justify-start">
+                <h1 className="text-xl text-white mb-1">Brightness</h1>
+                <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                <div className="flex flex-row justify-end">
+                    <span className="text-md text-white font-medium">Power off</span>
+                </div>
+            </div>
+        </Modal>
+    )
+};

@@ -19,7 +19,7 @@
 'use strict';
 
 module.exports = {
-    purge: ['./**/*.{js,jsx,ts,tsx}', 'a.html'],
+    purge: ['./**/*.{js,jsx,ts,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
@@ -29,6 +29,9 @@ module.exports = {
                 160: '40rem',
                 map: '40.3rem',
             }),
+            zIndex: {
+                500: 500,
+            },
             keyframes: {
                 wiggle: {
                     '0%, 100%': { transform: 'rotate(-1deg)' },
@@ -46,8 +49,10 @@ module.exports = {
                     'light': '#00C2CB',
                     'light-contrast': '#009da6',
                     'medium': '#006166',
-                    'dark': '#1B2434',
-                    'darker': '#141E30',
+                    'darkish': '#1a2742',
+                    'dark': '#1b2434',
+                    'darker': '#182130',
+                    'darkest': '#0b101a',
                 },
             },
             boxShadow: {
@@ -59,7 +64,8 @@ module.exports = {
         },
     },
     variants: {
-        extend: {},
+        margin: ['first', 'last'],
+        padding: ['first', 'last'],
     },
     plugins: [],
 };

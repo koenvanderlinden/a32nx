@@ -16,26 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import ReactDOM from 'react-dom';
-import { renderTarget } from '../util.js';
-import './style.scss';
+import React, { useEffect, useState } from "react";
 
-import { StatefulSimVar } from './Framework/StatefulSimVar.mjs';
-import { RadioManagementPanel } from './Components/RadioManagementPanel.jsx';
+export type ToggleProps = { value: boolean, onToggle: (value: boolean) => void; };
 
-function RootInstrumentDisplay() {
-    const lightsTestStatefulSimVar = new StatefulSimVar({
-        simVarGetter: 'L:XMLVAR_LTS_Test',
-        simVarUnit: 'Bool',
-        refreshRate: 250,
-    });
+export const Toggle: React.FC<ToggleProps> = (props) => {
+    const [on, setOn] = useState(props.value);
+
+    useEffect(() => props.onToggle(on), [on]);
 
     return (
-        <div className="rmp-wrapper">
-            <RadioManagementPanel side="L" lightsTest={lightsTestStatefulSimVar.value} />
-            <RadioManagementPanel side="R" lightsTest={lightsTestStatefulSimVar.value} />
+        <div onClick={() => setOn(on => !on)} className={`w-12 h-6 px-1 ${on ? "bg-blue-darker" : "bg-blue-dark"} rounded-full flex flex-row items-center`}>
+            <div className={`w-5 h-5 ${on ? "bg-blue-light-contrast" : "bg-gray-400"} rounded-full transition-colors transition-transform ${on ? "transform translate-x-5" : ""}`} />
         </div>
     );
 }
-
-ReactDOM.render(<RootInstrumentDisplay />, renderTarget);
